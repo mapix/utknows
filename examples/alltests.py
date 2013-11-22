@@ -14,8 +14,10 @@ def suite():
 
 
 if __name__ == "__main__":
-    # utkonws
     from utknows import setup_utknows
-    from redis_backend import create_redis_db
-    setup_utknows(create_redis_db(), root_dir=os.curdir)
-    unittest.main(defaultTest="suite", buffer=True)
+    #from redis_backend import open_db, close_db
+    from shelve_backend import open_db, close_db
+    db = open_db()
+    setup_utknows(db, root_dir=os.path.abspath(os.curdir))
+    unittest.main(defaultTest="suite", buffer=True, exit=False)
+    close_db(db)

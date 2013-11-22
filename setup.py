@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 from utknows import __version__
 BASE = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(BASE, 'README.md')).read()
+README = open(os.path.join(BASE, 'README.rst')).read()
 
 setup(
     name='utknows',

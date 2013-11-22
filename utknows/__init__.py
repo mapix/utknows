@@ -21,7 +21,7 @@ def _get_file_mtime(filename):
     return mtime
 
 
-def _call_func(self, db, db_prefix, root_dir, *args, **kwargs):
+def _call_func(self, db, root_dir, db_prefix, *args, **kwargs):
     skip = True
     dbkey = db_prefix + self.id()
     test_result = args[0]
@@ -44,7 +44,7 @@ def _call_func(self, db, db_prefix, root_dir, *args, **kwargs):
     tracer.runctx('self.run(*args, **kwargs)', globals=globals(), locals=locals())
     if failures_count == len(test_result.failures) and errors_count == len(test_result.errors):
         deps = {filename:_get_file_mtime(filename) for filename, _ in tracer.results().counts.keys() if filename.startswith(root_dir)}
-        db.set(dbkey, cPickle.dumps(deps))
+        db[dbkey] = cPickle.dumps(deps)
 
 
 def setup_utknows(db, root_dir, db_prefix="utknows:"):
