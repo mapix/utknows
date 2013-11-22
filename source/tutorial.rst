@@ -46,10 +46,10 @@ After that, the case will be skipped when the dependence info is satisfacted::
 
      OK (skipped=6)
 
-Case will be rerun after you modify any file it depends::
+Case will be rerun when you modify any file it depends::
 
     luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ touch test_hello.py
-    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
+    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py 
     ...sss
     ----------------------------------------------------------------------
     Ran 3 tests in 0.003s
@@ -57,6 +57,45 @@ Case will be rerun after you modify any file it depends::
     OK (skipped=3)
 
 The ``s`` output here stand for ``skip``.
+
+Eamples
+========
+
+Using ``redis`` as backend::
+
+    import redis
+
+    def open_db():
+        return redis.Redis(host='localhost', port=6379, db=0)
+
+    def close_db(db):
+        db.client_kill('localhost:6379')
+
+    from utknows import setup_utknows
+    db = open_db()
+    setup_utknows(db, root_dir=os.path.abspath(os.curdir))
+    unittest.main(defaultTest="suite", buffer=True, exit=False)
+    close_db(db)
+
+
+Using ``dbm`` as backend::
+
+    import os
+    import shelve
+
+    def open_db():
+        return shelve.open(os.path.join(os.curdir, '.utknows'), writeback=True)
+
+    def close_db(db):
+        db.sync()
+        db.close()
+
+    from utknows import setup_utknows
+    db = open_db()
+    setup_utknows(db, root_dir=os.path.abspath(os.curdir))
+    unittest.main(defaultTest="suite", buffer=True, exit=False)
+    close_db(db)
+
 
 License
 ========
