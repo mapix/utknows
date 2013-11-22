@@ -122,15 +122,15 @@ contain new features.</p>
 </div>
 <div class="section" id="using-utknows">
 <h2>Using utknows<a class="headerlink" href="#using-utknows" title="Permalink to this headline">¶</a></h2>
-<p><strong>utknows</strong> should be used before <tt class="docutils literal"><span class="pre">unittest.main</span></tt> in invoked like this:</p>
+<p><strong>utknows</strong> should be used before <tt class="docutils literal"><span class="pre">unittest.main</span></tt> is invoked like this:</p>
 <div class="highlight-python"><pre>from utknows import setup_utknows
 setup_utknows(db, db_prefix="utknows", root_dir=os.path.abspath(os.curdir))
 unittest.main(******, exit=False)
 # some resource release, etc db.close()</pre>
 </div>
-<p>The <tt class="docutils literal"><span class="pre">db</span></tt> is a persistence database instance, and implementate <tt class="docutils literal"><span class="pre">__getitem__</span></tt>  and <tt class="docutils literal"><span class="pre">__setitem__</span></tt> method.
-The <tt class="docutils literal"><span class="pre">root_dir</span></tt> is the tracing base of dependence used by trace.
-The <tt class="docutils literal"><span class="pre">db_prefix</span></tt> is the key prefix in <tt class="docutils literal"><span class="pre">db</span></tt>.</p>
+<p>The <tt class="docutils literal"><span class="pre">db</span></tt> is a persistence database instance, and implementate <tt class="docutils literal"><span class="pre">__getitem__</span></tt>  and <tt class="docutils literal"><span class="pre">__setitem__</span></tt> method.</p>
+<p>The <tt class="docutils literal"><span class="pre">root_dir</span></tt> is the tracing base of dependence used by trace.</p>
+<p>The <tt class="docutils literal"><span class="pre">db_prefix</span></tt> is the key prefix in <tt class="docutils literal"><span class="pre">db</span></tt>.</p>
 <p>When the first time tests runs, it calculate all the dependence info of every testcase:</p>
 <div class="highlight-python"><pre>luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
 ......
@@ -146,7 +146,7 @@ Ran 0 tests in 0.003s
 
 OK (skipped=6)</pre>
 </div>
-<p>Case will be rerun when you modify any file it depends:</p>
+<p>Case will be rerun after you modify any file it depends:</p>
 <div class="highlight-python"><pre>luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ touch test_hello.py
 luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
 ...sss

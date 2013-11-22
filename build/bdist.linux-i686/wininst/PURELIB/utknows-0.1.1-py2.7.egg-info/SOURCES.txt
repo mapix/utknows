@@ -1,0 +1,8 @@
+README.rst
+setup.py
+utknows/__init__.py
+utknows.egg-info/PKG-INFO
+utknows.egg-info/SOURCES.txt
+utknows.egg-info/dependency_links.txt
+utknows.egg-info/top_level.txt
+utknows.egg-info/zip-safe
