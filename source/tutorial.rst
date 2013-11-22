@@ -58,7 +58,7 @@ Case will be rerun when you modify any file it depends::
 
 The ``s`` output here stand for ``skip``.
 
-Eamples
+Examples
 ========
 
 Using ``redis`` as backend::
