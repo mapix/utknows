@@ -18,7 +18,7 @@ contain new features.
 Using utknows
 ================
 
-**utknows** should be used before ``unittest.main`` in invoked like this::
+**utknows** should be used before ``unittest.main`` is invoked like this::
 
     from utknows import setup_utknows
     setup_utknows(db, db_prefix="utknows", root_dir=os.path.abspath(os.curdir))
@@ -26,7 +26,9 @@ Using utknows
     # some resource release, etc db.close()
 
 The ``db`` is a persistence database instance, and implementate ``__getitem__``  and ``__setitem__`` method.
+
 The ``root_dir`` is the tracing base of dependence used by trace.
+
 The ``db_prefix`` is the key prefix in ``db``.
 
 When the first time tests runs, it calculate all the dependence info of every testcase::
@@ -46,10 +48,10 @@ After that, the case will be skipped when the dependence info is satisfacted::
 
      OK (skipped=6)
 
-Case will be rerun when you modify any file it depends::
+Case will be rerun after you modify any file it depends::
 
     luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ touch test_hello.py
-    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py 
+    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
     ...sss
     ----------------------------------------------------------------------
     Ran 3 tests in 0.003s
