@@ -12,7 +12,7 @@ setup(
     name='utknows',
     version=__version__,
     classifiers=['License :: OSI Approved :: BSD License'],
-    long_description=find_packages(),
+    long_description=README,
     url='http://mapix.me/utknows/',
     license='BSD',
     packages=['utknows'],
