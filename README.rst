@@ -33,7 +33,7 @@ The ``db_prefix`` is the key prefix in ``db``.
 
 When the first time tests runs, it calculate all the dependence info of every testcase::
 
-    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
+    utknows/examples$ python alltests.py
     ......
     ----------------------------------------------------------------------
     Ran 6 tests in 0.031s
@@ -41,7 +41,7 @@ When the first time tests runs, it calculate all the dependence info of every te
 
 After that, the case will be skipped when the dependence info is satisfacted::
 
-     luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
+     utknows/examples$ python alltests.py
      ssssss
      ----------------------------------------------------------------------
      Ran 0 tests in 0.003s
@@ -50,8 +50,8 @@ After that, the case will be skipped when the dependence info is satisfacted::
 
 Case will be rerun after you modify any file it depends::
 
-    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ touch test_hello.py
-    luoweifeng@luoweifeng-douban:~/workspace/utknows/examples$ python alltests.py
+    utknows/examples$ touch test_hello.py
+    utknows/examples$ python alltests.py
     ...sss
     ----------------------------------------------------------------------
     Ran 3 tests in 0.003s
